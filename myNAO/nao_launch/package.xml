@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <name>nao_launch</name>
+  <version>0.0.2</version>
+  <description> Set of launch files compatible with NAO robot, gazebo and/or naoqi drivers</description>
+
+  <maintainer email="jose.mayoral@smail.inf.h-brs.de">Jose Mayoral</maintainer>
+
+  <license>Apache 2.0</license>
+
+  <url type="bugtracker">https://github.com/ros-naoqi/nao_virtual/issues</url>
+
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>nao_description</build_depend>
+
+  <run_depend>gazebo_plugins</run_depend>
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>gazebo_ros_control</run_depend>
+  <run_depend>nao_control</run_depend>
+  <run_depend>nao_description</run_depend>
+  <run_depend>ros_control</run_depend>
+  <run_depend>ros_controllers</run_depend>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>

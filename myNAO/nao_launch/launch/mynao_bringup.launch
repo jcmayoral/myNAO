@@ -1,0 +1,41 @@
+<?xml version="0.0"?>
+<launch>
+  <arg name="gui" default="true" />
+  <param name="use_gui" value="$(arg gui)"/>
+  <arg name="debug" value="false"/>
+
+  <arg name="config_file" value="$(find nao_description)/config/urdf.rviz"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="virtual_joint_broadcaster_0" args="0 0 0 0 0 0 odom base_link 100" />
+
+  <param name="robot_description" command="$(find xacro)/xacro.py $(find nao_description)/urdf/naoV40_generated_urdf/nao.urdf" />
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="/use_gui" value="false"/>
+    <rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam>
+  </node>
+
+  <!--include file="$(find nao_description)/launch/robot_state_publisher.launch" >
+    <arg name="version"       value="V40" />
+  </include-->
+
+  <include file="$(find nao_moveit_config)/launch/move_group.launch">
+    <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="fake_execution" value="true"/>
+    <arg name="info" value="true"/>
+    <arg name="publish_monitored_planning_scene" value="true" />
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+  <!--include file="$(find nao_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="config" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include-->
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -x -0.5 -y 1 -z 0.535 -model nao_v40"/>
+
+  <!--include file="$(find nao_bringup)/launch/nao_full_py.launch">
+  </include -->
+
+</launch>
