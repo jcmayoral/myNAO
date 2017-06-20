@@ -1,0 +1,7 @@
+TO WALKER
+--- roscore
+--- naoqi
+--- naoqi_driver_py
+--- walker
+--- publish cmd_vel Twist Message
+
