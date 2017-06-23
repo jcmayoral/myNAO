@@ -5,7 +5,7 @@ project(nao_others)
 find_package(catkin REQUIRED COMPONENTS
 )
 
-catkin_python_set|up()
+catkin_python_setup()
 
 catkin_package(
 )
