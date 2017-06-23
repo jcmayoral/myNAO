@@ -2,6 +2,7 @@ TO WALKER
 --- roscore
 --- naoqi
 --- naoqi_driver_py
+--- robot_state_publisher
 --- walker
 --- publish cmd_vel Twist Message
 
